@@ -10,7 +10,8 @@ class HomeAdapter: RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
     private var categoryList = emptyList<Category>()
    inner class HomeViewHolder(private val binding:RecyclerHomeBinding):RecyclerView.ViewHolder(binding.root) {
         fun bind(item:Category) {
-            binding.buttonItem.text = item.title.toString()
+            binding.buttonItem.text = item.title
+            binding.buttonItem.setCompoundDrawablesWithIntrinsicBounds(item.icon,0,0,0)
         }
 
     }
@@ -26,6 +27,7 @@ class HomeAdapter: RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
 
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
         holder.bind(item = categoryList[position])
+
     }
 
     fun getData(newList:List<Category>){
