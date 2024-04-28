@@ -7,6 +7,7 @@ fun GetRole.toPresentation() =
     Role(
         id = id,
         role = role,
+        color = color,
         image = image,
         title = title,
         description = description

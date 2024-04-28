@@ -6,6 +6,7 @@ import java.util.UUID
 data class Role(
     val id: UUID = UUID.randomUUID(),
     val role: String,
+    val color:Int,
     val image: Drawable,
     val title: String,
     val description: String

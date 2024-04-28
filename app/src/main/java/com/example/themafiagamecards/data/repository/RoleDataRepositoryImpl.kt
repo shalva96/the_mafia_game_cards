@@ -16,12 +16,14 @@ class RoleDataRepositoryImpl @Inject constructor(
         return listOf(
             RoleData(
                 role = "Mafia",
+                color = 0,
                 image = ContextCompat.getDrawable(context, R.drawable.ic_launcher_foreground)!!,
                 title = "Why Mafia?",
                 description = "dsa"
             ),
             RoleData(
                 role = "gvbdfsgs",
+                color = 0,
                 image = ContextCompat.getDrawable(context, R.drawable.ic_launcher_foreground)!!,
                 title = "Why Mafia?",
                 description = "dsa"

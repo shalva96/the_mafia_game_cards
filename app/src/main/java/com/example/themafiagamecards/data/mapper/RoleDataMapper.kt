@@ -7,6 +7,7 @@ fun RoleData.toDomain() =
     GetRole(
         id = id,
         role = role,
+        color = color,
         image = image,
         title = title,
         description = description
