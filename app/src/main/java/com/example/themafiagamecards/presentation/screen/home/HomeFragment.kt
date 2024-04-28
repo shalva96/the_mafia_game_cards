@@ -10,6 +10,7 @@ import com.example.themafiagamecards.databinding.FragmentHomeBinding
 import com.example.themafiagamecards.presentation.adapter.home_adapter.HomeAdapter
 import com.example.themafiagamecards.presentation.common.base.BaseFragment
 import com.example.themafiagamecards.presentation.event.home.HomeEvents
+import com.example.themafiagamecards.presentation.screen.state.HomeState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -20,11 +21,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     private lateinit var categoryAdapter: HomeAdapter
 
     override fun bind() {
-        viewModel.get()
         bindAdapter()
     }
 
     override fun observe() {
+        observeState()
         observeUiState()
     }
 
@@ -37,7 +38,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         binding.rvCategory.layoutManager = LinearLayoutManager(requireContext())
         binding.rvCategory.adapter = categoryAdapter
 
-        categoryAdapter.getData(viewModel.categoryList)
+
     }
 
     private fun adapterListener() {
@@ -70,6 +71,22 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         }
     }
 
+    private fun observeState(){
+        viewModel.onEvent(HomeEvents.GetCategoryList)
+        viewLifecycleOwner.lifecycleScope.launch{
+            repeatOnLifecycle(Lifecycle.State.STARTED){
+                viewModel.homeState.collect{
+                    handleState(it)
+                }
+            }
+        }
+
+    }
+    private fun handleState(state: HomeState){
+        state.button?.let {
+            categoryAdapter.getData(it)
+        }
+    }
     private fun handleNavigation(event: HomeViewModel.NavigationEvent) {
         when (event) {
             is HomeViewModel.NavigationEvent.NavigateToGame -> {

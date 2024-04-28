@@ -1,5 +1,7 @@
 package com.example.themafiagamecards.presentation.screen.state
 
+import com.example.themafiagamecards.presentation.model.home_category.Category
+
 data class HomeState(
-    val state :Int? = null
+    val button :List<Category>? = null
 )
