@@ -8,12 +8,20 @@ import com.example.themafiagamecards.presentation.model.home_category.Category
 
 class HomeAdapter: RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
     private var categoryList = emptyList<Category>()
+    private var onItemClick:((Category) -> Unit)?= null
    inner class HomeViewHolder(private val binding:RecyclerHomeBinding):RecyclerView.ViewHolder(binding.root) {
         fun bind(item:Category) {
             binding.buttonItem.text = item.title
             binding.buttonItem.setCompoundDrawablesWithIntrinsicBounds(item.icon,0,0,0)
+
+            binding.root.setOnClickListener {
+                onItemClick?.invoke(item)
+            }
         }
 
+    }
+    fun onItemClick(category: (Category) -> Unit){
+        onItemClick = category
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
