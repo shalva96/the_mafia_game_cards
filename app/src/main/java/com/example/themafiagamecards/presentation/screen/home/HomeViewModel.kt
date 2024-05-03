@@ -9,6 +9,7 @@ import com.example.themafiagamecards.presentation.event.home.HomeEvents
 import com.example.themafiagamecards.presentation.model.home_category.Category
 import com.example.themafiagamecards.presentation.screen.state.HomeState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow

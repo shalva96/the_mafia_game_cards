@@ -1,10 +1,10 @@
 package com.example.themafiagamecards.presentation.screen.home
 
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.themafiagamecards.databinding.FragmentHomeBinding
 import com.example.themafiagamecards.presentation.adapter.home_adapter.HomeAdapter
@@ -37,28 +37,25 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         categoryAdapter = HomeAdapter()
         binding.rvCategory.layoutManager = LinearLayoutManager(requireContext())
         binding.rvCategory.adapter = categoryAdapter
-
-
     }
 
+
     private fun adapterListener() {
-        categoryAdapter.onItemClick(
-            category = {
-                when (it.title) {
-                    "Game" -> {
-                        viewModel.onEvent(HomeEvents.GoToGame)
-                    }
+        categoryAdapter.onItemClick(category = {
+            when (it.title) {
+                "Game" -> {
+                    viewModel.onEvent(HomeEvents.GoToGame)
+                }
 
-                    "Roles" -> {
-                        viewModel.onEvent(HomeEvents.GoToRoles)
-                    }
+                "Roles" -> {
+                    viewModel.onEvent(HomeEvents.GoToRoles)
+                }
 
-                    "Rules" -> {
-                        viewModel.onEvent(HomeEvents.GoToRules)
-                    }
+                "Rules" -> {
+                    viewModel.onEvent(HomeEvents.GoToRules)
                 }
             }
-        )
+        })
     }
 
     private fun observeUiState() {
@@ -71,34 +68,36 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         }
     }
 
-    private fun observeState(){
+    private fun observeState() {
         viewModel.onEvent(HomeEvents.GetCategoryList)
-        viewLifecycleOwner.lifecycleScope.launch{
-            repeatOnLifecycle(Lifecycle.State.STARTED){
-                viewModel.homeState.collect{
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.homeState.collect {
                     handleState(it)
                 }
             }
         }
 
     }
-    private fun handleState(state: HomeState){
+
+    private fun handleState(state: HomeState) {
         state.button?.let {
             categoryAdapter.getData(it)
         }
     }
+
     private fun handleNavigation(event: HomeViewModel.NavigationEvent) {
         when (event) {
             is HomeViewModel.NavigationEvent.NavigateToGame -> {
-                Toast.makeText(context, "Game", Toast.LENGTH_LONG).show()
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToGameFragment())
             }
 
             is HomeViewModel.NavigationEvent.NavigateToRoles -> {
-                Toast.makeText(context, "Roles", Toast.LENGTH_LONG).show()
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToRolesFragment())
             }
 
             is HomeViewModel.NavigationEvent.NavigateToRules -> {
-                Toast.makeText(context, "Rules", Toast.LENGTH_LONG).show()
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToRulesFragment())
             }
         }
     }
