@@ -3,8 +3,7 @@ package com.example.themafiagamecards.presentation.screen.roles
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.themafiagamecards.domain.usecase.GetRoleUseCase
-import com.example.themafiagamecards.presentation.event.Roles.RolesEvent
-import com.example.themafiagamecards.presentation.screen.home.HomeViewModel
+import com.example.themafiagamecards.presentation.event.roles.RolesEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
