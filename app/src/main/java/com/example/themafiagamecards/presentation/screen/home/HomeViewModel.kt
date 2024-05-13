@@ -1,15 +1,13 @@
 package com.example.themafiagamecards.presentation.screen.home
 
-import android.util.Log.d
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.themafiagamecards.R
 import com.example.themafiagamecards.domain.usecase.GetRoleUseCase
 import com.example.themafiagamecards.presentation.event.home.HomeEvents
 import com.example.themafiagamecards.presentation.model.home_category.Category
-import com.example.themafiagamecards.presentation.screen.state.HomeState
+import com.example.themafiagamecards.presentation.screen.state.home.HomeState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow

@@ -1,4 +1,4 @@
-package com.example.themafiagamecards.presentation.screen.state
+package com.example.themafiagamecards.presentation.screen.state.home
 
 import com.example.themafiagamecards.presentation.model.home_category.Category
 

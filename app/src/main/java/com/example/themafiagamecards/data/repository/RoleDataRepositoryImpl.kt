@@ -15,15 +15,15 @@ class RoleDataRepositoryImpl @Inject constructor(
     override fun getRoleData(): List<GetRole> {
         return listOf(
             RoleData(
-                role = "Mafia",
-                color = 0,
+                role = "Mafia Boss",
+                color = R.color.role_red,
                 image = ContextCompat.getDrawable(context, R.drawable.ic_launcher_foreground)!!,
                 title = "Why Mafia?",
                 description = "dsa"
             ),
             RoleData(
-                role = "gvbdfsgs",
-                color = 0,
+                role = "Nurse",
+                color = R.color.role_blue,
                 image = ContextCompat.getDrawable(context, R.drawable.ic_launcher_foreground)!!,
                 title = "Why Mafia?",
                 description = "dsa"

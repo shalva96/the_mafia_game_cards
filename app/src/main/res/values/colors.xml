@@ -5,4 +5,8 @@
 
     <color name="background_black">#121212</color>
     <color name="category_black">#222222</color>
+
+    <color name="role_red">#F06161</color>
+    <color name="role_blue">#50BAE7</color>
+    <color name="role_purple">#9350E7</color>
 </resources>

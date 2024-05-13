@@ -10,7 +10,7 @@ import com.example.themafiagamecards.databinding.FragmentHomeBinding
 import com.example.themafiagamecards.presentation.adapter.home_adapter.HomeAdapter
 import com.example.themafiagamecards.presentation.common.base.BaseFragment
 import com.example.themafiagamecards.presentation.event.home.HomeEvents
-import com.example.themafiagamecards.presentation.screen.state.HomeState
+import com.example.themafiagamecards.presentation.screen.state.home.HomeState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
